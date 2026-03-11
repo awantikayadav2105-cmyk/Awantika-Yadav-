@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awantika Yadav — Finance Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f9f6f0;
+      --ink:   #18140e;
+      --sand:  #e6ddd0;
+      --gold:  #b5894f;
+      --gold-lt: #d4a96a;
+      --muted: #8a7f72;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.3rem 6vw;
+      background: rgba(249,246,240,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--sand);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; letter-spacing: 0.05em;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; font-weight: 500;
+      transition: color .22s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 9rem 6vw 6rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-rule {
+      position: absolute; top: 0; right: 14vw;
+      width: 1px; height: 100%;
+      background: linear-gradient(to bottom, transparent 5%, var(--sand) 30%, var(--sand) 70%, transparent 95%);
+    }
+    .hero-bg-text {
+      position: absolute; bottom: 2rem; right: 4vw;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(6rem, 16vw, 13rem); font-weight: 300; line-height: 1;
+      color: var(--sand); user-select: none; pointer-events: none;
+      letter-spacing: -0.04em; opacity: 0.6;
+    }
+    .hero-inner { max-width: 780px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 1.6rem;
+      opacity: 0; animation: fadeUp .7s .15s ease forwards;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6.2rem);
+      font-weight: 300; line-height: 1.06; letter-spacing: -0.01em;
+      opacity: 0; animation: fadeUp .8s .3s ease forwards;
+    }
+    h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1rem; color: var(--muted); max-width: 500px; font-weight: 300;
+      opacity: 0; animation: fadeUp .8s .5s ease forwards;
+    }
+    .hero-ctas {
+      margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .8s .7s ease forwards;
+    }
+    .btn {
+      display: inline-block; text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.9rem 2.2rem; cursor: pointer; font-weight: 500;
+      transition: background .22s, color .22s, border-color .22s;
+    }
+    .btn-dark  { background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
+    .btn-dark:hover { background: var(--gold); border-color: var(--gold); }
+    .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--sand); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── SECTION COMMONS ─── */
+    section { padding: 7rem 6vw; }
+    .section-tag {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: .9rem;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 300; line-height: 1.15; margin-bottom: .8rem;
+    }
+    .rule { width: 44px; height: 1.5px; background: var(--gold); margin: 1.4rem 0 3rem; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.3fr;
+      gap: 5rem; align-items: start; max-width: 1100px; margin: 0 auto;
+    }
+    .about-card {
+      background: var(--cream); padding: 2.4rem;
+      border: 1px solid var(--sand); margin-top: 2.5rem;
+    }
+    .about-card-row {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: .75rem 0; border-bottom: 1px solid var(--sand);
+    }
+    .about-card-row:last-child { border-bottom: none; }
+    .about-icon { color: var(--gold); flex-shrink: 0; margin-top: .2rem; }
+    .about-card-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .about-card-val { font-size: .9rem; color: var(--ink); margin-top: .1rem; }
+    .about-right p {
+      font-size: 1.02rem; color: var(--muted); font-weight: 300;
+      margin-bottom: 1.2rem; line-height: 1.8;
+    }
+    .about-right p strong { color: var(--ink); font-weight: 500; }
+
+    /* ─── SKILLS ─── */
+    #skills { background: var(--cream); }
+    .skills-wrap { max-width: 1100px; margin: 0 auto; }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1px; background: var(--sand); border: 1px solid var(--sand);
+    }
+    .skill-cell {
+      background: var(--cream); padding: 2rem 1.8rem;
+      transition: background .22s; cursor: default;
+    }
+    .skill-cell:hover { background: var(--white); }
+    .skill-cell:hover .skill-dot { background: var(--gold); }
+    .skill-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sand); margin-bottom: 1rem; transition: background .22s;
+    }
+    .skill-name { font-size: .88rem; font-weight: 500; color: var(--ink); line-height: 1.4; }
+
+    /* ─── PROJECTS / CERTIFICATIONS ─── */
+    #projects { background: var(--white); }
+    .projects-wrap { max-width: 1100px; margin: 0 auto; }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .proj-card {
+      border: 1px solid var(--sand); padding: 2.2rem;
+      background: var(--cream); position: relative; overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .proj-card::after {
+      content: ''; position: absolute;
+      left: 0; bottom: 0; height: 2px; width: 0;
+      background: var(--gold); transition: width .3s ease;
+    }
+    .proj-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(24,20,14,.07); }
+    .proj-card:hover::after { width: 100%; }
+    .proj-type {
+      font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+    }
+    .proj-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 400; line-height: 1.3;
+      margin-bottom: .9rem; color: var(--ink);
+    }
+    .proj-desc { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+
+    /* ─── EXPERIENCE ─── */
+    #experience { background: var(--cream); }
+    .exp-wrap { max-width: 800px; margin: 0 auto; }
+    .exp-item {
+      display: grid; grid-template-columns: 160px 1fr;
+      gap: 2.5rem; padding: 2.5rem 0;
+      border-bottom: 1px solid var(--sand);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-date { font-size: .78rem; color: var(--muted); letter-spacing: .04em; padding-top: .3rem; }
+    .exp-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 400; margin-bottom: .4rem;
+    }
+    .exp-company { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+    .exp-desc { font-size: .88rem; color: var(--muted); line-height: 1.75; }
+
+    /* ─── EDUCATION ─── */
+    #education { background: var(--white); }
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .edu-card { border: 1px solid var(--sand); padding: 2.2rem; background: var(--cream); }
+    .edu-year { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: .8rem; }
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 400; margin-bottom: .5rem;
+    }
+    .edu-major { font-size: .82rem; color: var(--muted); margin-bottom: .3rem; }
+    .edu-inst { font-size: .82rem; font-weight: 500; color: var(--ink); }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--ink); color: var(--cream); }
+    #contact .section-tag { color: var(--gold-lt); }
+    #contact h2 { color: var(--cream); }
+    #contact .rule { background: var(--gold-lt); }
+    .contact-wrap { max-width: 700px; }
+    .contact-sub { font-size: 1rem; color: rgba(249,246,240,.5); margin-bottom: 3rem; font-weight: 300; }
+    .contact-links { display: flex; flex-direction: column; gap: 1.2rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.4rem 1.8rem; border: 1px solid rgba(255,255,255,.1);
+      text-decoration: none; color: var(--cream);
+      transition: border-color .22s, background .22s;
+    }
+    .contact-row:hover { border-color: var(--gold); background: rgba(181,137,79,.08); }
+    .contact-row-label { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-lt); display: block; }
+    .contact-row-val { font-size: .94rem; color: var(--cream); margin-top: .15rem; display: block; }
+    .c-icon { color: var(--gold); flex-shrink: 0; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink); color: rgba(249,246,240,.3);
+      text-align: center; padding: 2rem 6vw;
+      font-size: .74rem; letter-spacing: .1em;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .exp-item { grid-template-columns: 1fr; gap: .4rem; }
+      .nav-links { display: none; }
+      h1 { font-size: 3rem; }
+      .hero-bg-text { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Awantika Yadav</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Certifications</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/awantika-yadav-b1178428a" target="_blank" rel="noopener noreferrer" style="color:var(--gold);">LinkedIn ↗</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-rule"></div>
+  <div class="hero-bg-text">Finance</div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Finance &amp; Accounting Professional</span>
+    <h1>Awantika<br/><em>Yadav</em></h1>
+    <p class="hero-sub">
+      B.Com graduate specialising in Accounting &amp; Financial Markets — adept at financial analysis, data-driven decision-making, and market fundamentals.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-dark">View Certifications</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/awantika-yadav-b1178428a" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="display:inline-flex;align-items:center;gap:.5rem;">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="section-tag">Who I Am</p>
+      <h2>About<br/>Me</h2>
+      <div class="rule"></div>
+      <div class="about-card">
+        <div class="about-card-row">
+          <svg class="about-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <div class="about-card-label">Location</div>
+            <div class="about-card-val">Prayagraj, Uttar Pradesh</div>
+          </div>
+        </div>
+        <div class="about-card-row">
+          <svg class="about-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/></svg>
+          <div>
+            <div class="about-card-label">Degree</div>
+            <div class="about-card-val">Bachelor of Commerce (2022–2025)</div>
+          </div>
+        </div>
+        <div class="about-card-row">
+          <svg class="about-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div>
+            <div class="about-card-label">Specialisation</div>
+            <div class="about-card-val">Accounting &amp; Financial Markets</div>
+          </div>
+        </div>
+        <div class="about-card-row">
+          <svg class="about-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.13 12.6 19.79 19.79 0 0 1 1.06 4a2 2 0 0 1 1.98-2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.34 1.85.574 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div>
+            <div class="about-card-label">Phone</div>
+            <div class="about-card-val">+91 7307432322</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right reveal" style="transition-delay:.15s">
+      <p class="section-tag">&nbsp;</p>
+      <h2>Ready to Make<br/>an <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--gold)">Impact</em></h2>
+      <div class="rule"></div>
+      <p>
+        I am a <strong>recent Bachelor of Commerce graduate</strong> from the University of Allahabad, with majors in Accounting and Financial Markets. My academic journey has given me a solid foundation in financial analysis, market fundamentals, and data-driven decision-making.
+      </p>
+      <p>
+        Through <strong>virtual internships and industry certifications</strong>, I have gained practical exposure to investment banking workflows, financial modelling, Excel automation, and business analysis — bridging the gap between theory and real-world practice.
+      </p>
+      <p>
+        I am collaborative, organised, and quick to adopt new tools, bringing <strong>strong interpersonal and analytical skills</strong> to every challenge I take on. I am eager to launch my career in accounting or finance where I can contribute meaningfully from day one.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="skills-wrap">
+    <p class="section-tag reveal">What I Bring</p>
+    <h2 class="reveal">Core<br/>Competencies</h2>
+    <div class="rule reveal"></div>
+    <div class="skills-grid reveal">
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Financial Statements</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Data-Driven Planning</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Markets Analysis</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Decision Making &amp; Time Management</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Critical Thinking</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Excellent Communication</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Strong Interpersonal Skills</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Proactive &amp; Self-Motivated</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Exceptional Organisation</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Excel &amp; Automation</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Financial Modelling</div></div>
+      <div class="skill-cell"><div class="skill-dot"></div><div class="skill-name">Business Analysis</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="projects">
+  <div class="projects-wrap">
+    <p class="section-tag reveal">Credentials</p>
+    <h2 class="reveal">Certifications &amp;<br/>Projects</h2>
+    <div class="rule reveal"></div>
+    <div class="projects-grid">
+
+      <div class="proj-card reveal">
+        <div class="proj-type">SEBI · Certification</div>
+        <div class="proj-title">NISM Certificate of SEBI Investor Awareness</div>
+        <div class="proj-desc">Gained in-depth knowledge of SEBI regulations, investor rights, and the fundamentals of safe investing practices within the Indian capital markets framework.</div>
+      </div>
+
+      <div class="proj-card reveal" style="transition-delay:.08s">
+        <div class="proj-type">Finance · Data Analytics</div>
+        <div class="proj-title">Analytics in Finance</div>
+        <div class="proj-desc">Learned how to apply data analytics techniques to financial decision-making and performance evaluation, transforming raw data into actionable business insights.</div>
+      </div>
+
+      <div class="proj-card reveal" style="transition-delay:.16s">
+        <div class="proj-type">Investment Banking · Simulation</div>
+        <div class="proj-title">Investment Banking Job Simulation</div>
+        <div class="proj-desc">Hands-on exposure to company valuation, financial modelling, and pitch book preparation through a rigorous virtual internship simulation on Forage.</div>
+      </div>
+
+      <div class="proj-card reveal" style="transition-delay:.24s">
+        <div class="proj-type">Excel · Business Skills</div>
+        <div class="proj-title">Excel Skills for Business</div>
+        <div class="proj-desc">Built expertise in financial spreadsheets, data visualisation, and automation techniques for tackling complex business problem-solving scenarios.</div>
+      </div>
+
+      <div class="proj-card reveal" style="transition-delay:.32s">
+        <div class="proj-type">Strategy · Process Improvement</div>
+        <div class="proj-title">Business Analysis</div>
+        <div class="proj-desc">Acquired skills in re
